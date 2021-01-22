@@ -7,12 +7,12 @@ Pronounce: Peak Cuddle
 The main client CLI tool for interfacing with the PQueue service
 
 ```bash
-pqctl --namespace=nova get <queue>
-pqctl --namespace=nova list
-pqctl --namespace=nova set <queue> <message>
-pqctl --namespace=nova delete <queue>
-pqctl --namespace=nova empty <queue>
-alias pn="pqctl --namespace=nova"
+pqctl --namespace=<namespace> get <queue>
+pqctl --namespace=<namespace> list
+pqctl --namespace=<namespace> set <queue> <message>
+pqctl --namespace=<namespace> delete <queue>
+pqctl --namespace=<namespace> empty <queue>
+alias pn="pqctl --namespace=<namespace>"
 pn get <queue> 
 pn list 
 pn set <queue> <message>
@@ -21,13 +21,13 @@ pn set <queue> <message>
 ### Creating namespace queues in Kubernetes
 
 ```bash
-$ kubectl create namespace nova
-$ pqctl create <channel> --namespace nova
-$ kubectl get pods --namespace nova
+$ kubectl create namespace <namespace>
+$ pqctl create <channel> --namespace=<namespace>
+$ kubectl get pods --namespace=<namespace>
   NAME                     STATUS
   pqueue-<channel>-01      ready
-$ pqctl set <channel> --namespace=nova <message>
-$ pqctl get <channel> --namespace=nova 
+$ pqctl set <channel> --namespace=<namespace> <message>
+$ pqctl get <channel> --namespace=<namespace>
   '
   {
       "message": "great message"
